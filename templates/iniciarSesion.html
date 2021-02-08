@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Instacreations | iniciar Sesion</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="{{ url_for('static',filename = 'css/bootstrap.min.css')}}">
+      <!-- style css -->
+      <link rel="stylesheet" href="{{ url_for('static',filename = 'css/style.css')}}">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="{{ url_for('static',filename = 'css/responsive.css')}}">
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="{{ url_for('static',filename = 'css/jquery.mCustomScrollbar.min.css')}}">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <link href="{{ url_for('static',filename = 'css/styleDairis.css')}}" rel="stylesheet">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout" style='background-image: url("../static/images/redondo.png");'>
+      <!-- loader  -->
+      <div class="loader_bg">
+         <div class="loader"><img src="{{ url_for('static',filename = 'images/loading.gif')}}" alt="#" /></div>
+      </div>
+      <!-- end loader -->
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo"> <a href="{{url_for('index')}}"><img src="{{ url_for('static',filename = 'images/1.png')}}" alt="#"></a> </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end header inner -->
+      </header>
+      <!-- start sectoion registro -->
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+  <div id="registro" class="paddsection">
+    <div class="container">
+      <div class="registro-block1">
+        <div class="row">
+            <form action="" method="post" role="form" class="registroForm" style="margin-left: 300px;">
+               {{ form.hidden_tag() }} 
+			<h1>Iniciar Sesión</h1>
+
+                <div id="sendmessage">Bienvenido</div>
+                <div id="errormessage"></div>
+
+                <div class="col-lg-6">
+                  <div class="form-group registro-block1" style="width: 420px;">
+                  <!-- Nombre de Usuario:<input type="text" name="NombreUsuario" class="form-control" id="nombre" placeholder="Su nombre" /> -->
+                    {{ form.usuario2.label }}
+                    {{ form.usuario2 }}
+                    {% for error in form.usuario2.errors %}
+                   <h6 style="font-size: x-small; text-align: left;">{{ error }}</h6>
+					      {% endfor %}
+                    <div class="validation"></div>
+                  <div class="validation"></div>
+                    <br>
+                    <!-- Contraseña:<input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña" /> -->
+                    {{ form.password2.label }}
+                    <script>
+                     function mostrarPassword(obj){
+                        var obj = document.getElementById('password2');
+                        obj.type = "text";
+                     }
+                     function ocultarPassword(obj){
+                        var obj = document.getElementById('password2');
+                        obj.type = "password";
+                     }
+                     
+                     </script>
+                  <img src="..\static\images\show_pwd.jpg" onmouseover="mostrarPassword();" onmouseout="ocultarPassword();" style="height: 12px; width: 18px;" />
+                    {{ form.password2 }}
+                    {% for error in form.password2.errors %}
+                   <h6 style="font-size: x-small; text-align: left;">{{ error }}</h6>
+					      {% endfor %}
+                    <div class="validation"></div>
+                    <div class="validation"></div>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <!-- <input type="submit" class="btn btn-defeault btn-send" value="Iniciar"> -->
+               {{ form.iniciar() }}
+               <a href="{{url_for('index')}}" class="btn btn-defeault btn-send" role="button">Cancelar</a> 
+				    <a href="{{url_for('restablecerContrasena')}}" class="btn btn-defeault btn-send" role="button" style="width: 220px;">Restablecer Contraseña</a>
+                </div>
+            </form>
+        </div>
+        {% for message in get_flashed_messages() %}
+                                    
+               <h6><br>{{ message }}</h6>
+       
+               {% endfor %}
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div id="contact" class="footer">
+       <div class="container">
+          <div class="row pdn-top-30">
+             <div class="col-md-12 ">
+                <div class="footer-box">
+                   <div class="headinga">
+                      <span>Demo Red Social de Imágenes</span>
+                      <li> <a href="#"><img src="{{ url_for('static',filename = 'images/2.png')}}" sizes="25%"></a></li>
+                   </div>
+                   <ul class="location_icon">
+                      
+                      
+                   </ul>
+                   <div class="menu-bottom">
+                      <ul class="link">
+                         <li> <a href="#">Volver arriba</a></li>
+                         
+                      </ul>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="copyright">
+          <div class="container">
+             <p>Copyright 2020 All Rights Reserved Design By  <a href="https://www.mintic.gov.co/portal/inicio/">CoffeTeam</a></p>
+          </div>
+       </div>
+    </div>
+ </footer>
+ <!-- end footer -->
+ <!-- Javascript files-->
+ <script src="{{ url_for('static',filename = 'js/jquery.min.js')}}"></script>
+ <script src="{{ url_for('static',filename = 'js/popper.min.js')}}"></script>
+ <script src="{{ url_for('static',filename = 'js/bootstrap.bundle.min.js')}}"></script>
+ <script src="{{ url_for('static',filename = 'js/jquery-3.0.0.min.js')}}"></script>
+ <script src="{{ url_for('static',filename = 'js/plugin.js')}}"></script>
+ <!-- sidebar -->
+ <script src="{{ url_for('static',filename = 'js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+ <script src="{{ url_for('static',filename = 'js/custom.js')}}"></script>
+ <!-- javascript --> 
+ <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+ <script>
+    $(document).ready(function(){
+    $(".fancybox").fancybox({
+    openEffect: "none",
+    closeEffect: "none"
+    });
+    
+    $(".zoom").hover(function(){
+    
+    $(this).addClass('transition');
+    }, function(){
+    
+    $(this).removeClass('transition');
+    });
+    });
+    
+ </script> 
+</body>
+</html>
+  <!-- start sectoion registro -->
